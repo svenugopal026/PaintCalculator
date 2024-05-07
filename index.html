@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paint Calculator</title>
+</head>
+<body>
+<h1 align="center"><u><font color="#008000">Paint Calculator : How Much Paint 
+Required for a House</font></u></h1>
+<center><table border="1" width="35%">
+	<tr>
+		<td width="59%">
+    <p align="right"><font color="#FF0000"><b>
+    <label for="length">Length of the house (feet):</label></b></font></td>
+		<td width="38%">
+    <font color="#0000FF">
+    <input type="number" id="length" name="length" required></font></td>
+	</tr>
+	<tr>
+		<td align="right" width="59%">
+    <font color="#FF0000"><b>
+    <label for="width">Width of the house (feet):</label>
+    </b></font>
+    </td>
+		<td width="38%">
+    <font color="#0000FF">
+    <input type="number" id="width" name="width" required></font></td>
+	</tr>
+	<tr>
+		<td align="right" width="59%"><font color="#FF0000"><b>Height of the house (feet): 
+		</b></font> </td>
+		<td width="38%">
+    <font color="#0000FF">
+    <input type="number" id="height" name="height" required></font></td>
+	</tr>
+	<tr>
+		<td align="right" width="59%"><font color="#FF0000"><b>Paint coverage area per gallon (square feet):
+		</b></font>
+		</td>
+		<td width="38%">
+    <font color="#0000FF">
+    <input type="number" id="coverage" name="coverage" required></font></td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+</table>
+</center>
+<form id="paintForm">
+    <p align="center"><font size="2">&nbsp;</font>
+    <button type="button" onclick="calculatePaint()" style="width: 114; height: 32">
+	<b><font color="#008000">Click Here</font></b><p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p><b><font color="#008000">oCalculate</font></b></button>
+	</p>
+</form>
+<center>
+<p id="result" align="center"></p>
+
+<script>
+function calculatePaint() {
+    var length = parseFloat(document.getElementById('length').value);
+    var width = parseFloat(document.getElementById('width').value);
+    var height = parseFloat(document.getElementById('height').value);
+    var coverage = parseFloat(document.getElementById('coverage').value);
+
+    var totalSurfaceArea = 2 * (length * height + width * height);
+    var paintRequired = totalSurfaceArea / coverage;
+    var paintInLiters = paintRequired * 3.78541; // Convert gallons to liters
+
+    document.getElementById('result').innerHTML = "Total paint required: " + paintInLiters.toFixed(2) + " liters";
+}
+</script>
+</body>
+</center>
+</html>
